@@ -1,0 +1,19 @@
+{
+    "author": "Adron Hall",
+    "name": "symphonize",
+    "description": "Prints out data to the console! Will be iterating soon for real functionality!",
+    "version": "0.1.0",
+    "repository": {
+        "url": "git@github.com:Adron/symphonize.git"
+    },
+    "main": "./lib/main",
+    "bin": {
+        "replaceme": "./bin/symphonize"
+    },
+    "dependencies": {},
+    "devDependencies": {},
+    "optionalDependencies": {},
+    "engines": {
+        "node": "*"
+    }
+}

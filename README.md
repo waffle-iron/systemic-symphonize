@@ -3,10 +3,7 @@ symphonize
 
 This project is a client library for the Orchestrate.io services. Check out http://orchestrate.io/ for more information on those services. For more information on the library ping me [@adron](https://github.com/Adron) on github or [@adron](https://twitter.com/Adron) on Twitter.
 
-**or·ches·trate** transitive verb \ˈȯr-kə-ˌstrāt\
-
-: to write or change (a piece of music) so that it can be played by an orchestra
-
-: to organize or plan (something that is complicated)
-
-For more check out [Orchestrator on Merriam-Webster](http://www.merriam-webster.com/dictionary/orchestrator).
+Sym´pho`nize
+v. i.	1.	To agree; to be in harmony.
+[imp. & p. p. Symphonized ; p. pr. & vb. n. Symphonizing .]
+Webster's Revised Unabridged Dictionary, published 1913 by C. & G. Merriam Co.

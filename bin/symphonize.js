@@ -1,10 +1,9 @@
-
-function createKeyValueData() {
-    console.log('Key Value Data Generation.');
-}
-
-function createGraphData() {
-    console.log('Graph Data Generation.');
+function new_guid() {
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+    return guid;
 }
 
 exports.generateContent = function generateContent(objectCount, dataAbstraction) {
@@ -12,24 +11,19 @@ exports.generateContent = function generateContent(objectCount, dataAbstraction)
 
     for (var i = 0; i < objectCount; i++) {
         var iOSidentifier = new Object();
-        iOSidentifier.guid = this.guid();
+        iOSidentifier.guid = new_guid();
         iOSidentifier.first = 'rand first';
         iOSidentifier.last = 'rand last';
         iOSidentifier.cell = '555-555-rand';
 
         var identifier = JSON.stringify(iOSidentifier);
 
-        content.push(identifier);
-    }
+        var keyValue = new Object();
+        keyValue.key = new_guid();
+        keyValue.value = identifier;
 
-    if(dataAbstraction === 'keyvalue'){
-        createKeyValueData();
+        content.push(keyValue);
     }
-
-    if(dataAbstraction === 'graph'){
-        createGraphData();
-    }
-
     return content;
 }
 
@@ -54,13 +48,7 @@ exports.generateFileDump = function (fileName, objectCount) {
 }
 
 exports.guid = function(){
-
-    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-        return v.toString(16);
-    });
-
-    return guid;
+    return new_guid();
 };
 
 exports.writeIoOrchestrate = function(dataAbstraction){

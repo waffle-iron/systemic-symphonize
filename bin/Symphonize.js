@@ -1,16 +1,33 @@
-exports.generateContent = function generateContent(objectCount) {
+
+function createKeyValueData() {
+    console.log('Key Value Data Generation.');
+}
+
+function createGraphData() {
+    console.log('Graph Data Generation.');
+}
+
+exports.generateContent = function generateContent(objectCount, dataAbstraction) {
     var content = new Array();
 
     for (var i = 0; i < objectCount; i++) {
-        var iOSident = new Object();
-        iOSident.guid = this.guid();
-        iOSident.first = 'rand first';
-        iOSident.last = 'rand last';
-        iOSident.cell = '555-555-rand';
+        var iOSidentifier = new Object();
+        iOSidentifier.guid = this.guid();
+        iOSidentifier.first = 'rand first';
+        iOSidentifier.last = 'rand last';
+        iOSidentifier.cell = '555-555-rand';
 
-        var identifier = JSON.stringify(iOSident);
+        var identifier = JSON.stringify(iOSidentifier);
 
         content.push(identifier);
+    }
+
+    if(dataAbstraction === 'keyvalue'){
+        createKeyValueData();
+    }
+
+    if(dataAbstraction === 'graph'){
+        createGraphData();
     }
 
     return content;
@@ -19,8 +36,16 @@ exports.generateContent = function generateContent(objectCount) {
 exports.generateFileDump = function (fileName, objectCount) {
     var fs = require('fs');
 
-    if(fileName === null || fileName === '')
+    if(fileName === null || fileName === ''){
         fileName = 'dumpfile.json';
+        console.log('Default file name: ' + fileName);
+    }
+
+    if(objectCount === null || objectCount < 1){
+        objectCount = 4;
+        console.log('Default object count: ' + objectCount);
+    }
+
 
     fs.writeFile(fileName, this.generateContent(objectCount), function (err) {
         if (err) return console.log(err);
@@ -38,10 +63,17 @@ exports.guid = function(){
     return guid;
 };
 
-exports.writeIoOrchestrate = function(){
+exports.writeIoOrchestrate = function(dataAbstraction){
+    // Write data to orchestrate.io based on appropriate key value or graph storage.
 
+    if(dataAbstraction === 'keyvalue'){
+        createKeyValueData();
+    }
+
+    if(dataAbstraction === 'graph'){
+        createGraphData();
+    }
 };
 
-//console.log(this.generateFileDump(null, 100));
 
-console.log(this.generateContent(10));
+console.log(this.generateContent(10, 'keyvalue'));

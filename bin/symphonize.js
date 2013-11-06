@@ -34,24 +34,17 @@ exports.generateFileDump = function (fileName, objectCount) {
 
     if(fileName === null || fileName === ''){
         fileName = 'dumpfile.json';
-        console.log('Default file name: ' + fileName);
     }
 
     if(objectCount === null || objectCount < 1){
         objectCount = 4;
-        console.log('Default object count: ' + objectCount);
     }
-
 
     fs.writeFile(fileName, this.generateContent(objectCount), function (err) {
         if (err) return console.log(err);
         console.log('File written.');
     });
 }
-
-exports.guid = function(){
-    return new_guid();
-};
 
 exports.writeIoOrchestrate = function(dataAbstraction){
     // Write data to orchestrate.io based on appropriate key value or graph storage.

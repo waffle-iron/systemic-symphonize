@@ -1,39 +1,36 @@
 {
-    "name": "symphonize",
-    "version": "0.0.1",
-    "description": "Spits out all sorts of random generic data of various sorts. Check README.md for more information!",
-    "main": "./lib/main",
-    "bin": {
-        "ballin-octo-tyrion": "tyrion.js"
-    },
-    "dependencies": {
-        "orchestrate": "~0.0.1"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "engines": {
-        "node": "*"
-    },
-    "main": "./lib/main",
-    "bin": {
-        "replaceme": "./bin/symphonize"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:Adron/symphonize.git"
-    },
-    "keywords": [
-        "orchestrate.io",
-        "orchestrate",
-        "key",
-        "value",
-        "graph"
-    ],
-    "author": "Adron Hall",
-    "license": "Apache 2.0",
-    "bugs": {
-        "url": "https://github.com/Adron/symphonize/issues"
-    }
+  "name": "symphonize",
+  "version": "0.0.1",
+  "description": "Spits out all sorts of random generic data of various sorts. Check README.md for more information!",
+  "main": "./lib/main",
+  "bin": {
+    "replaceme": "./bin/symphonize"
+  },
+  "dependencies": {
+    "orchestrate": "~0.0.1",
+    "chance": "~0.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Adron/symphonize.git"
+  },
+  "keywords": [
+    "orchestrate.io",
+    "orchestrate",
+    "key",
+    "value",
+    "graph"
+  ],
+  "author": "Adron Hall",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/Adron/symphonize/issues"
+  }
 }

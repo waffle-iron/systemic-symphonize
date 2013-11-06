@@ -1,25 +1,27 @@
-function new_guid() {
-    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-    return guid;
-}
+// Load Chance
+var Chance = require('chance');
 
 exports.generateContent = function generateContent(objectCount, dataAbstraction) {
     var content = new Array();
+    var chance = new Chance();
 
     for (var i = 0; i < objectCount; i++) {
         var iOSidentifier = new Object();
-        iOSidentifier.guid = new_guid();
-        iOSidentifier.first = 'rand first';
-        iOSidentifier.last = 'rand last';
-        iOSidentifier.cell = '555-555-rand';
+        iOSidentifier.guid = chance.guid();
+        iOSidentifier.first = chance.first();
+        iOSidentifier.last = chance.last();
+        iOSidentifier.cell = chance.phone();
+        iOSidentifier.work = chance.phone();
+        iOSidentifier.birthday = chance.birthday();
+        iOSidentifier.gender = chance.gender();
+        iOSidentifier.long = chance.longitude();
+        iOSidentifier.lat = chance.latitude();
+        iOSidentifier.CFUUID = chance.guid();
 
         var identifier = JSON.stringify(iOSidentifier);
 
         var keyValue = new Object();
-        keyValue.key = new_guid();
+        keyValue.key = chance.guid();
         keyValue.value = identifier;
 
         content.push(keyValue);

@@ -1,24 +1,24 @@
 // Load Chance
 var Chance = require('chance');
 
-exports.generateContent = function generateContent(objectCount, dataAbstraction) {
+exports.generateKeyValueContent = function generateKeyValueContent(objectCount) {
     var content = new Array();
     var chance = new Chance();
 
     for (var i = 0; i < objectCount; i++) {
-        var iOSidentifier = new Object();
-        iOSidentifier.guid = chance.guid();
-        iOSidentifier.first = chance.first();
-        iOSidentifier.last = chance.last();
-        iOSidentifier.cell = chance.phone();
-        iOSidentifier.work = chance.phone();
-        iOSidentifier.birthday = chance.birthday();
-        iOSidentifier.gender = chance.gender();
-        iOSidentifier.long = chance.longitude();
-        iOSidentifier.lat = chance.latitude();
-        iOSidentifier.CFUUID = chance.guid();
+        var identifier = new Object();
+        identifier.guid = chance.guid();
+        identifier.first = chance.first();
+        identifier.last = chance.last();
+        identifier.cell = chance.phone();
+        identifier.work = chance.phone();
+        identifier.birthday = chance.birthday();
+        identifier.gender = chance.gender();
+        identifier.long = chance.longitude();
+        identifier.lat = chance.latitude();
+        identifier.CFUUID = chance.guid();
 
-        var identifier = JSON.stringify(iOSidentifier);
+        var identifier = JSON.stringify(identifier);
 
         var keyValue = new Object();
         keyValue.key = chance.guid();
@@ -26,6 +26,23 @@ exports.generateContent = function generateContent(objectCount, dataAbstraction)
 
         content.push(keyValue);
     }
+    return content;
+}
+
+exports.generateGraphContent = function generateGraphContent(objectCount) {
+    var content = new Array();
+    var chance = new Chance();
+
+    for(var i=0; i<objectCount; i++){
+        var identifier = new Object();
+        identifier.relations = chance.d20();
+        identifier.key = chance.d20();
+        identifier.guid =
+
+
+        console.log(chance.guid() + chance.d12() + chance.d20());
+    }
+
     return content;
 }
 
@@ -40,7 +57,7 @@ exports.generateFileDump = function (fileName, objectCount) {
         objectCount = 4;
     }
 
-    fs.writeFile(fileName, this.generateContent(objectCount), function (err) {
+    fs.writeFile(fileName, this.generateKeyValueContent(objectCount), function (err) {
         if (err) return console.log(err);
         console.log('File written.');
     });
@@ -59,4 +76,5 @@ exports.writeIoOrchestrate = function(dataAbstraction){
 };
 
 
-console.log(this.generateContent(10, 'keyvalue'));
+console.log(this.generateKeyValueContent(2));
+console.log(this.generateGraphContent(10));

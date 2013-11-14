@@ -1,6 +1,7 @@
 // Load Chance
 var Chance = require('chance');
 
+
 exports.generateKeyValueContent = function generateKeyValueContent(objectCount) {
     var content = new Array();
     var chance = new Chance();

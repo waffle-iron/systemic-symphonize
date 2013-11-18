@@ -1,44 +1,48 @@
 var Chance = require('chance'),
-    orchestrator = require('orchestrate')("01233006-eaa7-4e3a-94d5-bb27cfc809cd"),
     chance = new Chance(),
-    newline = '\r\n',
-    spacing = '    ';
-
-// Create a test object.
-var identifier = new Object();
-identifier.identifier = chance.d20() * chance.d10();
-identifier.first = chance.first();
-identifier.last = chance.last();
-identifier.CFUUID = chance.guid();
-
-var identifier = JSON.stringify(identifier);
-
-var keyValue = new Object();
-keyValue.key = chance.guid();
-keyValue.value = identifier;
-
-// Write to a tenant location a key value.
-console.log('Writing key:\r\n' + keyValue.key + '.');
-var collection = 'listz';
-
-orchestrator.put(collection, keyValue.key, {
-    "name": "Adron Hall",
-    "hometown": "Portland",
-    "twitter": "@adron"
-})
-.then(function (result) {
-    var displayData = result.toJSON();
-
-    console.log('Properties: \r\n\r\n');
-    displayIt(displayData);
-})
-.fail(function (err) {
-    console.log('Shux, something broke.: \r\n' + err);
-});
-
-
-console.log('\r\nAll processed.\r\n');
+    orchestrator = require('orchestrate')("01233006-eaa7-4e3a-94d5-bb27cfc809cd"),
+    collection = 'listz';
 
 function displayIt(theDataToDisplay) {
-    console.log(spacing + theDataToDisplay + newline);
+    console.log('    ' + theDataToDisplay + '\r\n');
 }
+
+var key = chance.guid();
+displayIt('Writing key ' + key);
+
+var inputData = {
+    "First": chance.first(),
+    "Last": chance.last(),
+    "Number": chance.d20() * chance.d10()
+};
+
+displayIt('...with value of ' + JSON.stringify(inputData));
+
+// Writing, then reading and then deleting
+// the record with a success message or failure.
+orchestrator.put(collection, key, inputData)
+    .then(function(result){
+        displayIt('success!!');
+
+        orchestrator.get(collection, key)
+            .then(function(result){
+                displayIt('data retrieved!');
+
+                displayIt(JSON.stringify(result.body));
+
+                orchestrator.remove(collection, key)
+                    .then(function (result) {
+                        displayIt('data deleted, all gone!');
+                    })
+                    .fail(function (err) {
+                        displayIt('Another error ' + err);
+                    })
+            })
+            .fail(function(err){
+                displayIt('An error ' + err);
+            });
+
+    })
+    .fail(function(err){
+        displayIt('Brutal, fail a lot eh!')
+    });

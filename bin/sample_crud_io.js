@@ -21,13 +21,12 @@ displayIt('...with value of ' + JSON.stringify(inputData));
 // Writing, then reading and then deleting
 // the record with a success message or failure.
 orchestrator.put(collection, key, inputData)
-    .then(function(result){
+    .then(function (result) {
         displayIt('success!!');
 
         orchestrator.get(collection, key)
-            .then(function(result){
+            .then(function (result) {
                 displayIt('data retrieved!');
-
                 displayIt(JSON.stringify(result.body));
 
                 orchestrator.remove(collection, key)
@@ -38,11 +37,11 @@ orchestrator.put(collection, key, inputData)
                         displayIt('Another error ' + err);
                     })
             })
-            .fail(function(err){
+            .fail(function (err) {
                 displayIt('An error ' + err);
             });
 
     })
-    .fail(function(err){
+    .fail(function (err) {
         displayIt('Brutal, fail a lot eh!')
     });

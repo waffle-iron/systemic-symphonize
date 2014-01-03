@@ -1,1 +1,1 @@
-exports = require('./lib/symphonize')
+module.exports = require('./bin/symphonize')

@@ -1,37 +1,37 @@
 {
-  "name": "symphonize",
-  "version": "0.0.0",
-  "description": "A data generator specifically built for Orchestrate.io",
-  "main": "lib/main.js",
-  "bin": {
-    "symphonize": "symphonize.js"
-  },
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "mocha tests/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Adron/symphonize"
-  },
-  "keywords": [
-    "symphonize",
-    "test",
-    "data",
-    "generation",
-    "random",
-    "dataset"
-  ],
-  "author": "Adron Hall",
-  "license": "Apache 2.0",
-  "bugs": {
-    "url": "https://github.com/Adron/symphonize/issues"
-  },
-  "homepage": "https://github.com/Adron/symphonize",
-  "dependencies": {
-    "orchestrate": "0.0.3",
-    "chance": "~0.5.4"
-  }
+    "name": "symphonize",
+    "version": "0.0.0",
+    "description": "A data generator specifically built for Orchestrate.io",
+    "main": "index.js",
+    "bin": {
+        "symphonize": "symphonize.js"
+    },
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test": "mocha tests/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Adron/symphonize"
+    },
+    "keywords": [
+        "symphonize",
+        "test",
+        "data",
+        "generation",
+        "random",
+        "dataset"
+    ],
+    "author": "Adron Hall",
+    "license": "Apache 2.0",
+    "bugs": {
+        "url": "https://github.com/Adron/symphonize/issues"
+    },
+    "homepage": "https://github.com/Adron/symphonize",
+    "dependencies": {
+        "orchestrate": "0.0.3",
+        "chance": "~0.5.4"
+    }
 }

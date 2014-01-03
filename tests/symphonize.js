@@ -4,7 +4,7 @@
  */
 // Pull local requires and test em'.
 var assert = require("assert")
-var symphonize = require('../bin/symphonize');
+var symphonize = require('../lib/symphonize');
 
 var gen_spec_key_value = {
     "Schema": "KeyValue",

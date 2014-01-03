@@ -1,19 +1,18 @@
 var Chance = require('chance'),
     chance = new Chance(),
-    multi_gen = require('./multi_gen'),
-    symphonize = exports;
+    multi_gen = require('./multi_gen');
 
-symphonize.generate_sample = function () {
-
+function Symphonize(generation_specification) {
+    this.gen_spec = generation_specification;
 }
 
-symphonize.generate = function (gen_spec) {
+Symphonize.prototype.act_on_object = function () {
     // This function generates data based on the received specification.
     // To learn more about the specification check out this link:
     //   https://github.com/Adron/symphonize/wiki/Json-format-for-configuration-based-data-generation.
 
+
+    return this.gen_spec;
 }
 
-symphonize.idents_generate = function (count) {
-    return multi_gen.gen(count, this);
-}
+modules.exports = Symphonize;

@@ -1,5 +1,3 @@
-var multi_gen = exports;
-
 multi_gen.gen = function (count, ident) {
     var data = new Array();
     for (var i = 0; i < count; i++) {
@@ -7,3 +5,6 @@ multi_gen.gen = function (count, ident) {
     }
     return data;
 }
+
+
+var multi_gen = exports;

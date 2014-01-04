@@ -1,5 +1,5 @@
 /**
- * Created by adron on 1/3/14.
+ * Created by Adron on 1/3/14.
  * Description: Test for error stats of Symphonize object.
  */
 

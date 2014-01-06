@@ -24,12 +24,25 @@ Symphonize.prototype.generate_spec = function () {
 }
 
 Symphonize.prototype.generate = function () {
-    var keyValue = {
+    var keyValues = new Array();
+    var recordCount = 1;
+
+    if (this._generation_spec.count > 0) {
+        recordCount = this._generation_spec.count;
+    }
+
+    for (var i = 0; i < recordCount; i++) {
+        keyValues.push(generateKeyValue());
+    }
+
+    return keyValues;
+}
+
+function generateKeyValue() {
+    return {
         "key": chance.guid(),
         "value": chance.paragraph({sentences: 1})
     };
-
-    return keyValue;
 }
 
 module.exports = Symphonize;

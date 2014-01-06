@@ -39,8 +39,8 @@ describe('the default graph generation', function () {
         var symphonize = new Symphonize(default_graph_spec);
         var keyValue = symphonize.generate();
 
-        keyValue.key.should.exist;
-        keyValue.value.should.exist;
+        keyValue[0].key.should.exist;
+        keyValue[0].value.should.exist;
     })
 })
 

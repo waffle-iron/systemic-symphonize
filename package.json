@@ -28,8 +28,10 @@
     },
     "homepage": "https://github.com/Adron/symphonize",
     "dependencies": {
-        "orchestrate": "0.0.3",
         "chance": "~0.5.4",
+        "orchestrate": "0.0.3"
+    },
+    "devDependencies": {
         "should": "~2.1.1"
     }
 }

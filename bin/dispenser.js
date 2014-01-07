@@ -11,6 +11,11 @@ function Dispenser(write_to) {
 Dispenser.prototype.write_it = function () {
     if (this_write_to === "console") {
 
+    } else if (this_write_to === "orchestrate") {
+
     }
 
 }
+
+
+module.exports = Dispenser;

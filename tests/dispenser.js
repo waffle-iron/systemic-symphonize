@@ -4,19 +4,20 @@
  */
 
 var should = require('should');
-var db = require('orchestrate');
-var Symphonize = require('../bin/symphonize');
+var Dispenser = require('../bin/dispenser');
 
-var gen_spec_write_to_source = {
-    "schema": "keyvalue",
-    "count": 20,
-    "write_source": "orchestrate"
-}
+describe('the dispenser', function () {
 
-describe('the general spec', function () {
-//    it('should determine the appropriate write to source.', function () {
-//        var symphonize = new Symphonize(gen_spec_write_to_source);
-//
-//    })
-//
+    var dispenser = new Dispenser('console');
+
+    it('should have a value set to console if passed console.', function () {
+        dispenser._write_to.should.eql('console');
+    })
+
+
+    var dispenser_orchestrate = new Dispenser('orchestrate');
+
+    it('should have a value set to orchestrate if passed orchestrate.', function () {
+        dispenser_orchestrate._write_to.should.eql('orchestrate');
+    })
 })

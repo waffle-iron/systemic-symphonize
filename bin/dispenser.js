@@ -10,20 +10,45 @@
  *
  * The code for the key should look like this:
  *
- * function gimme_orchestrate_key(){
- *  return "012fyour-key3-goes-98f3-hereffe33f4e";
- * }
+
+ function Gimme_orchestrate_key(){
+   return "012fyour-key3-goes-98f3-hereffe33f4e";
+  }
+ module.exports = Gimme_orchestrate_key;
+
  */
 
-var db = require('orchestrate');
+
+//    orchestrator.get(collection, key)
+//        .then(function (result) {
+//            var body = result.body;
+//            console.log(body);
+//            res.send(body);
+//        })
+//        .fail(function (err) {
+//            res.send(err);
+//        });
+
+
+var db_key = require('../key/orchestrate_key');
+var db = require('orchestrate')();
 
 function Dispenser(write_to) {
     this._write_to = write_to;
 }
 
 function write_to_orchestrate(data_to_write) {
-
-
+    db.put('musician', data_to_write.key, data_to_write.value)
+        .then(function (result) {
+            console.log(data_to_write.key);
+            res.send(result);
+            return true;
+        })
+        .fail(function (err) {
+            console.log(err);
+            res.send(err);
+            return false;
+        });
 }
 
 function write_to_console(data_to_write) {
@@ -31,14 +56,15 @@ function write_to_console(data_to_write) {
 }
 
 Dispenser.prototype.write_it = function (data_to_write) {
-    for (var i = 0; i < data_to_write.count; i++) {
+    var success = false;
+    for (var i = 0; i < data_to_write.length; i++) {
         if (this._write_to === "console") {
-            write_to_console(data_to_write);
+            success = write_to_console(data_to_write);
         } else if (this._write_to === "orchestrate") {
-            write_to_orchestrate(data_to_write);
+            success = write_to_orchestrate(data_to_write);
         }
     }
-    return 'success';
+    return success;
 }
 
 module.exports = Dispenser;

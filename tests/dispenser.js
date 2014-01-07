@@ -24,13 +24,15 @@ describe('the dispenser', function () {
     it('should have a value set to console if passed console.', function () {
         dispenser._write_to.should.eql('console');
     })
-    it('should write passed in data to the console.', function () {
-        dispenser.write_it(data_result_Array).should.eql('success');
-    })
 
     var dispenser_orchestrate = new Dispenser('orchestrate');
 
     it('should have a value set to orchestrate if passed orchestrate.', function () {
         dispenser_orchestrate._write_to.should.eql('orchestrate');
     })
+    it('should write passed in data to orchestrate.io.', function () {
+        var writtenResult = dispenser_orchestrate.write_it(data_result_Array);
+
+        console.log(writtenResult);
+    });
 })

@@ -1,41 +1,57 @@
 /**
  * Created by Adron on 12/30/13.
- * Description: Tests for the multi_gen code.
+ * Description: Tests for the specifications.
  */
 
 var should = require('should');
 var Symphonize = require('../bin/symphonize');
 
-var gen_spec_key_value_20 = {
-    "schema": "keyvalue",
-    "count": 20
+var gen_spec_key_value = {
+    "schema": "keyvalue"
 }
 
-var gen_spec_key_value = {
-    "schema": "keyvalue",
-    "count": 10,
-    "valueSetPairs": 4,
-    "setPairs": {
-        "Pair1": "d10",
-        "Pair2": "guid",
-        "Pair3": "email",
-        "Pair4": "address"
-    }
-};
+describe('the general specification', function () {
 
-describe('the general spec', function () {
+    var symphonize = new Symphonize(gen_spec_key_value);
+    var specifications = symphonize.get_specification();
+
     it('should construct through constructor given invocation.', function () {
-        var symphonize = new Symphonize(gen_spec_key_value_20);
         symphonize.should.exist;
     })
-    it('should return an appropriate value given no parameters.', function () {
-        var symphonize = new Symphonize(gen_spec_key_value_20);
-        var result = symphonize.generate_spec();
-        result.should.exist;
+    it('should have specifications.', function () {
+        symphonize.get_specification().should.exist;
     })
-    it('should generate X records', function () {
-        var symphonize = new Symphonize(gen_spec_key_value_20);
-        var result = symphonize.generate();
-        result.length.should.eql(20);
+    it('should have an appropriate schema specification as assigned.', function () {
+        specifications.schema.should.eql("keyvalue");
+    })
+    it('should have an appropriate count for the default unspecificed value.', function () {
+        specifications.count.should.eql(1);
+    })
+    it('should have an appropriate write to source for the default unspecificed value.', function () {
+        specifications.write_source.should.eql("console");
+    })
+})
+
+var schema = "graph", count = 324000, write_source = "neo4j";
+
+var gen_spec = {
+    "schema": schema,
+    "count": count,
+    "write_source": write_source
+}
+
+describe('the specification with non-defaults', function () {
+
+    var symphonize = new Symphonize(gen_spec);
+    var specifications = symphonize.get_specification();
+
+    it('should have an appropriate schema based on passed in value.', function () {
+        specifications.schema.should.eql(schema);
+    })
+    it('should have an appropriate count based on passed in value.', function () {
+        specifications.count.should.eql(count);
+    })
+    it('should have an appropriate write based on passed in value.', function () {
+        specifications.write_source.should.eql(write_source);
     })
 })

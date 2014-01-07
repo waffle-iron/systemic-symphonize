@@ -8,11 +8,15 @@ var Chance = require('chance');
 var chance = new Chance();
 
 function Symphonize(generation_spec) {
-    this._generation_spec = generation_spec;
-
-    if (this._generation_spec.schema != 'keyvalue' && this._generation_spec.schema != 'graph') {
-        throw Error("Generator only generates key value or graph data currently.");
+    if (generation_spec.count === undefined || generation_spec.count < 1) {
+        generation_spec.count = 1;
     }
+
+    if (generation_spec.write_source === undefined || generation_spec.write_source === "") {
+        generation_spec.write_source = "console";
+    }
+
+    this._generation_spec = generation_spec;
 }
 
 function build_random_records(recordCount, keyValues) {
@@ -28,11 +32,7 @@ function generateKeyValue() {
     };
 }
 
-Symphonize.prototype.generating_schema = function () {
-    return this._generation_spec.schema;
-}
-
-Symphonize.prototype.generate_spec = function () {
+Symphonize.prototype.get_specification = function () {
     return this._generation_spec;
 }
 
@@ -48,6 +48,5 @@ Symphonize.prototype.generate = function () {
 
     return keyValues;
 }
-
 
 module.exports = Symphonize;

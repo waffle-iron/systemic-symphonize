@@ -32,6 +32,10 @@ function generateKeyValue() {
     };
 }
 
+function dump_to_write_source() {
+
+}
+
 Symphonize.prototype.get_specification = function () {
     return this._generation_spec;
 }
@@ -45,6 +49,8 @@ Symphonize.prototype.generate = function () {
     }
 
     build_random_records(recordCount, keyValues);
+
+    dump_to_write_source();
 
     return keyValues;
 }

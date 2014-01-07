@@ -4,29 +4,29 @@
  *  to the designated write source.
  */
 
-function Dispenser(generated_data, write_to) {
+function Dispenser(write_to) {
     this._write_to = write_to;
-    this._generated_data = generated_data;
 }
 
-function write_to_orchestrate() {
+function write_to_orchestrate(data_to_write) {
 
 }
 
-function write_to_console() {
+function write_to_console(data_to_write) {
 
-
-    for (var i = 0; i < this._generated_data.length; i++) {
-        console.log(this._generated_data[i]);
+    for (var i = 0; i < data_to_write.count; i++) {
+        console.log(data_to_write[i]);
     }
 }
 
-Dispenser.prototype.write_it = function () {
+Dispenser.prototype.write_it = function (data_to_write) {
     if (this._write_to === "console") {
-        write_to_console();
+        write_to_console(data_to_write);
     } else if (this._write_to === "orchestrate") {
-        write_to_orchestrate();
+        write_to_orchestrate(data_to_write);
     }
+
+    return 'success';
 }
 
 module.exports = Dispenser;

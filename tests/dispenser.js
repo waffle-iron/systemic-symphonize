@@ -19,16 +19,16 @@ data_result_Array.push(data_result_1);
 
 describe('the dispenser', function () {
 
-    var dispenser = new Dispenser(data_result_Array, 'console');
+    var dispenser = new Dispenser('console');
 
     it('should have a value set to console if passed console.', function () {
         dispenser._write_to.should.eql('console');
     })
     it('should write passed in data to the console.', function () {
-        dispenser.write_it().should.eql('success');
+        dispenser.write_it(data_result_Array).should.eql('success');
     })
 
-    var dispenser_orchestrate = new Dispenser(data_result_Array, 'orchestrate');
+    var dispenser_orchestrate = new Dispenser('orchestrate');
 
     it('should have a value set to orchestrate if passed orchestrate.', function () {
         dispenser_orchestrate._write_to.should.eql('orchestrate');

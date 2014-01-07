@@ -16,4 +16,4 @@ node_modules
 
 .idea
 
-bin/orchestrate_key.js
+orchestrate_key.js

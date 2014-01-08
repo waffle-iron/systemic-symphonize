@@ -7,9 +7,10 @@
 var assert = require("assert")
 
 describe('Test Framework', function () {
-    describe('mocha', function () {
-        it('should be installed and running.', function () {
-            assert.equal(true, true);
-        })
+    it('should have mocha installed and running.', function () {
+        assert.equal(true, true);
+    })
+    it('should have the should library installed and running.', function () {
+        true.should.eql(true);
     })
 })

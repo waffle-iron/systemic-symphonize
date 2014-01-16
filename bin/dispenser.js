@@ -11,14 +11,16 @@
  * The code for the key should look like this:
  *
 
-function Orchestrate_key(){
+ function Orchestrate_key(){
    this.access_key = '012fsome-ekey-goes-98f3-hereffe33f4e';
 }
-module.exports = Orchestrate_key;
+ module.exports = Orchestrate_key;
 
  */
 
-var db = require('orchestrate')('012f0213-e573-4559-98f3-3c8fffe33f4e');
+var blagh = require("../key/orchestrate_key");
+var key = blagh.access_key;
+var db = require('orchestrate')(key);
 
 function Dispenser(write_to) {
     this._write_to = write_to;
@@ -50,11 +52,7 @@ function write_to_console(data_to_write) {
 }
 
 Dispenser.prototype.write_it = function (data_to_write) {
-
-
     for (var i = 0; i < data_to_write.length; i++) {
-
-
         if (this._write_to === "console") {
             write_to_console(data_to_write[i]);
         } else if (this._write_to === "orchestrate") {

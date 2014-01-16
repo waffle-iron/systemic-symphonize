@@ -11,43 +11,37 @@
  * The code for the key should look like this:
  *
 
- function Gimme_orchestrate_key(){
-   return "012fyour-key3-goes-98f3-hereffe33f4e";
-  }
- module.exports = Gimme_orchestrate_key;
+function Orchestrate_key(){
+   this.access_key = '012fsome-ekey-goes-98f3-hereffe33f4e';
+}
+module.exports = Orchestrate_key;
 
  */
 
-
-//    orchestrator.get(collection, key)
-//        .then(function (result) {
-//            var body = result.body;
-//            console.log(body);
-//            res.send(body);
-//        })
-//        .fail(function (err) {
-//            res.send(err);
-//        });
-
-
-var db_key = require('../key/orchestrate_key');
-var db = require('orchestrate')();
+var db = require('orchestrate')('012f0213-e573-4559-98f3-3c8fffe33f4e');
 
 function Dispenser(write_to) {
     this._write_to = write_to;
 }
 
 function write_to_orchestrate(data_to_write) {
-    db.put('musician', data_to_write.key, data_to_write.value)
+
+    var collection = 'musician';
+    var key = "1";
+    var value = {
+        "name": "Alfred Palfred",
+        "bio": "Alfred just does cool stuff."
+    };
+    var db_test = db;
+
+    db.put(collection, key, value)
         .then(function (result) {
-            console.log(data_to_write.key);
+            debugger;
             res.send(result);
-            return true;
         })
         .fail(function (err) {
-            console.log(err);
+            debugger;
             res.send(err);
-            return false;
         });
 }
 
@@ -56,15 +50,17 @@ function write_to_console(data_to_write) {
 }
 
 Dispenser.prototype.write_it = function (data_to_write) {
-    var success = false;
+
+
     for (var i = 0; i < data_to_write.length; i++) {
+
+
         if (this._write_to === "console") {
-            success = write_to_console(data_to_write);
+            write_to_console(data_to_write[i]);
         } else if (this._write_to === "orchestrate") {
-            success = write_to_orchestrate(data_to_write);
+            write_to_orchestrate(data_to_write[i]);
         }
     }
-    return success;
 }
 
 module.exports = Dispenser;

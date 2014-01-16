@@ -1,7 +1,7 @@
 /**
- * Created by Adron on 1/6/14.
- * Description: Tests for determining reads, writes and deletes to Orchestrate.io
- */
+* Created by Adron on 1/6/14.
+* Description: Tests for determining reads, writes and deletes to Orchestrate.io
+*/
 
 var should = require('should');
 var Chance = require('chance');
@@ -11,11 +11,22 @@ var chance = new Chance();
 // Sample data for testing.
 var data_result_1 = {
     "key": chance.guid(),
-    "value": chance.paragraph({sentences: 1})
+    "value":{
+        "name": chance.name(),
+        "bio" : chance.paragraph({sentences: 1})
+    }
+};
+var data_result_2 = {
+    "key": chance.guid(),
+    "value":{
+        "name": chance.name(),
+        "bio" : chance.paragraph({sentences: 1})
+    }
 };
 
 var data_result_Array = new Array();
 data_result_Array.push(data_result_1);
+data_result_Array.push(data_result_2);
 
 describe('the dispenser', function () {
 
@@ -30,9 +41,12 @@ describe('the dispenser', function () {
     it('should have a value set to orchestrate if passed orchestrate.', function () {
         dispenser_orchestrate._write_to.should.eql('orchestrate');
     })
-    it('should write passed in data to orchestrate.io.', function () {
-        var writtenResult = dispenser_orchestrate.write_it(data_result_Array);
 
-        console.log(writtenResult);
+    it('should write passed in data to orchestrate.io.', function () {
+
+        var data = data_result_Array;
+
+        dispenser_orchestrate.write_it(data);
+
     });
 })

@@ -14,13 +14,14 @@
  function Orchestrate_key(){
    this.access_key = '012fsome-ekey-goes-98f3-hereffe33f4e';
 }
+
+ Orchestrate_key.prototype.key = this.access_key;
  module.exports = Orchestrate_key;
 
  */
 
-var blagh = require("../key/orchestrate_key");
-var key = blagh.access_key;
-var db = require('orchestrate')(key);
+var orchestrate_key_holder = require("../key/orchestrate_key");
+var key_holder = new orchestrate_key_holder();
 
 function Dispenser(write_to) {
     this._write_to = write_to;
@@ -34,7 +35,9 @@ function write_to_orchestrate(data_to_write) {
         "name": "Alfred Palfred",
         "bio": "Alfred just does cool stuff."
     };
-    var db_test = db;
+
+    var orchestrate_key = key_holder.access_key;
+    var db = require('orchestrate')(orchestrate_key);
 
     db.put(collection, key, value)
         .then(function (result) {

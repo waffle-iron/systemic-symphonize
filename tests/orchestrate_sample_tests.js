@@ -17,21 +17,24 @@ describe('the orchestrate client', function () {
     it('should exist when constructed.', function () {
         db.should.exist;
     })
-    it('should have a key.', function () {
-
-        var dba = db;
-
-        var promiseThing = db.get(collection, key)
+    it('should put the data.', function (done) {
+        db.put(collection, key, value)
             .then(function (result) {
-                console.log(result);
+
             })
             .fail(function (err) {
-                console.log(err);
-            })
-            .fin(function (blugh) {
-                console.log(blugh);
-            });
 
-        var promise = promiseThing;
+            })
+    })
+    it('should have a result.', function (done) {
+        db.get(collection, key)
+            .then(function (result) {
+                result.should.exist;
+                done();
+            })
+            .fail(function (err) {
+                err.should.not.exist;
+                done();
+            })
     })
 })

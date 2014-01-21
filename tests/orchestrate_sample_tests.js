@@ -20,10 +20,12 @@ describe('the orchestrate client', function () {
     it('should put the data.', function (done) {
         db.put(collection, key, value)
             .then(function (result) {
-
+                result.should.exist;
+                done();
             })
             .fail(function (err) {
-
+                err.should.not.exist;
+                done();
             })
     })
     it('should have a result.', function (done) {

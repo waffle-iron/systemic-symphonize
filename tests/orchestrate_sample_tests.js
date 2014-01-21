@@ -9,14 +9,16 @@ var db = require('orchestrate')(orchestrate_key);
 var collection = 'musician';
 var key = "1";
 var value = {
-    "name": "Alfred Palfred",
-    "bio": "Alfred just does cool stuff."
+    "name": "Adron Hall",
+    "bio": "That's me!!!"
 };
 
 describe('the orchestrate client', function () {
+
     it('should exist when constructed.', function () {
         db.should.exist;
     })
+
     it('should put the data.', function (done) {
         db.put(collection, key, value)
             .then(function (result) {
@@ -28,6 +30,7 @@ describe('the orchestrate client', function () {
                 done();
             })
     })
+
     it('should have a result.', function (done) {
         db.get(collection, key)
             .then(function (result) {
@@ -39,4 +42,5 @@ describe('the orchestrate client', function () {
                 done();
             })
     })
+
 })

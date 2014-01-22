@@ -1,5 +1,3 @@
-require("mocha-as-promised")();
-
 var orchestrate_holder = require("../key/orchestrate_key");
 var key_holder = new orchestrate_holder();
 var orchestrate_key = key_holder.access_key;

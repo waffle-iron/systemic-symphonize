@@ -19,17 +19,26 @@ function Symphonize(generation_spec) {
     this._generation_spec = generation_spec;
 }
 
-function build_random_records(recordCount, keyValues) {
+function build_random_records(recordCount, keyValues, fields) {
     for (var i = 0; i < recordCount; i++) {
-        keyValues.push(generateKeyValue());
+        keyValues.push(generateKeyValue(fields));
     }
 }
 
-function generateKeyValue() {
-    return {
+function generateKeyValue(fields) {
+
+    var valueJSON = {};
+
+    for (var i = 0; i < fields.length; i++) {
+        valueJSON[fields[i]] = chance.sentence();
+    }
+
+    var generatedResult = {
         "key": chance.guid(),
-        "value": chance.paragraph({sentences: 1})
+        "value": [ valueJSON ]
     };
+
+    return generatedResult;
 }
 
 function dump_to_write_source() {
@@ -43,12 +52,23 @@ Symphonize.prototype.get_specification = function () {
 Symphonize.prototype.generate = function () {
     var keyValues = new Array();
     var recordCount = 1;
+    var fields = new Array();
 
+    // Generate X amount of records. **
     if (this._generation_spec.count > 0) {
         recordCount = this._generation_spec.count;
     }
 
-    build_random_records(recordCount, keyValues);
+    // These many fields with the respective name
+    // in the value JSON data.
+    if (this._generation_spec.fields === undefined) {
+        fields.push('text_value');
+    } else {
+        fields = this._generation_spec.fields.split(',');
+    }
+
+    // **
+    build_random_records(recordCount, keyValues, fields);
 
     dump_to_write_source();
 

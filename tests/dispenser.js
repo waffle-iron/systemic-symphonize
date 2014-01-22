@@ -51,7 +51,6 @@ describe('the dispenser to orchestrate.io', function () {
     it('should write passed in data to orchestrate.io.', function (done) {
 
         var result = dispenser_orchestrate.write_it(data_result_Array);
-
         done();
         result.should.eql(true);
     });

@@ -10,7 +10,7 @@ var gen_spec_key_value = {
     "schema": "keyvalue"
 }
 
-describe('the general specification', function () {
+describe('the generation specification', function () {
 
     var symphonize = new Symphonize(gen_spec_key_value);
     var specifications = symphonize.get_specification();
@@ -40,7 +40,7 @@ var gen_spec = {
     "write_source": write_source
 }
 
-describe('the specification with non-defaults', function () {
+describe('the generation specification with non-defaults', function () {
 
     var symphonize = new Symphonize(gen_spec);
     var specifications = symphonize.get_specification();

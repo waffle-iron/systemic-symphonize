@@ -11,14 +11,17 @@ var default_keyvalue_spec = {"schema": "keyvalue"};
 var gen_spec_key_value_20 = {"schema": "keyvalue", "count": 20};
 
 describe('the default keyvalue generation', function () {
+
     it('should construct through constructor given invocation.', function () {
         var symphonize = new Symphonize(default_keyvalue_spec);
         symphonize.should.exist;
     })
+
     it('should return generated data given an empty spec.', function () {
         var symphonize = new Symphonize(default_keyvalue_spec);
         symphonize.generate().should.exist;
     })
+
     it('should return one key value result.', function () {
         var symphonize = new Symphonize(default_keyvalue_spec);
         var keyValue = symphonize.generate();
@@ -26,6 +29,7 @@ describe('the default keyvalue generation', function () {
         keyValue[0].key.should.exist;
         keyValue[0].value.should.exist;
     })
+
     it('should generate X records', function () {
         var symphonize = new Symphonize(gen_spec_key_value_20);
         var result = symphonize.generate();

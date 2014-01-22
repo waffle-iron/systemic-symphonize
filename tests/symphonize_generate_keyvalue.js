@@ -7,23 +7,23 @@ var should = require('should');
 var Symphonize = require('../bin/symphonize');
 
 // Specs for testing.
-var default_keyvalue_spec = {"schema": "keyvalue"};
+var default_key_value_spec = {"schema": "keyvalue"};
 var gen_spec_key_value_20 = {"schema": "keyvalue", "count": 20};
 
-describe('the default keyvalue generation', function () {
+describe('the default key value generation', function () {
 
     it('should construct through constructor given invocation.', function () {
-        var symphonize = new Symphonize(default_keyvalue_spec);
+        var symphonize = new Symphonize(default_key_value_spec);
         symphonize.should.exist;
     })
 
     it('should return generated data given an empty spec.', function () {
-        var symphonize = new Symphonize(default_keyvalue_spec);
+        var symphonize = new Symphonize(default_key_value_spec);
         symphonize.generate().should.exist;
     })
 
     it('should return one key value result.', function () {
-        var symphonize = new Symphonize(default_keyvalue_spec);
+        var symphonize = new Symphonize(default_key_value_spec);
         var keyValue = symphonize.generate();
 
         keyValue[0].key.should.exist;

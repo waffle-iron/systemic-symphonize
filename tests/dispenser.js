@@ -1,7 +1,7 @@
 /**
-* Created by Adron on 1/6/14.
-* Description: Tests for determining reads, writes and deletes to Orchestrate.io
-*/
+ * Created by Adron on 1/6/14.
+ * Description: Tests for determining reads, writes and deletes to Orchestrate.io
+ */
 
 var should = require('should');
 var Chance = require('chance');
@@ -11,16 +11,16 @@ var chance = new Chance();
 // Sample data for testing.
 var data_result_1 = {
     "key": chance.guid(),
-    "value":{
+    "value": {
         "name": chance.name(),
-        "bio" : chance.paragraph({sentences: 1})
+        "bio": chance.paragraph({sentences: 1})
     }
 };
 var data_result_2 = {
     "key": chance.guid(),
-    "value":{
+    "value": {
         "name": chance.name(),
-        "bio" : chance.paragraph({sentences: 1})
+        "bio": chance.paragraph({sentences: 1})
     }
 };
 
@@ -51,7 +51,6 @@ describe('the dispenser to orchestrate.io', function () {
         dispenser_orchestrate.write_it(data);
 
         done();
-        // testing something.
 
         db.get(collection, key)
             .then(function (result) {

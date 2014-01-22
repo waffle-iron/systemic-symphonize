@@ -28,13 +28,15 @@ var data_result_Array = new Array();
 data_result_Array.push(data_result_1);
 data_result_Array.push(data_result_2);
 
-describe('the dispenser', function () {
-
+describe('the dispenser to the console', function () {
     var dispenser = new Dispenser('console');
 
     it('should have a value set to console if passed console.', function () {
         dispenser._write_to.should.eql('console');
     })
+})
+
+describe('the dispenser to orchestrate.io', function () {
 
     var dispenser_orchestrate = new Dispenser('orchestrate');
 
@@ -42,11 +44,23 @@ describe('the dispenser', function () {
         dispenser_orchestrate._write_to.should.eql('orchestrate');
     })
 
-    it('should write passed in data to orchestrate.io.', function () {
+    it('should write passed in data to orchestrate.io.', function (done) {
 
         var data = data_result_Array;
 
         dispenser_orchestrate.write_it(data);
+
+        done();
+        // testing something.
+
+        db.get(collection, key)
+            .then(function (result) {
+
+                var test = result.body;
+            })
+            .fail(function (err) {
+                res.send(err);
+            });
 
     });
 })

@@ -20,9 +20,10 @@
 
  */
 
+// Setup the database connection to orchestrate.io.
 var orchestrate_key_holder = require("../key/orchestrate_key");
 var key_holder = new orchestrate_key_holder();
-
+var db = require('orchestrate')(key_holder.access_key);
 function Dispenser(write_to) {
     this._write_to = write_to;
 }
@@ -30,16 +31,8 @@ function Dispenser(write_to) {
 function write_to_orchestrate(data_to_write) {
 
     var collection = 'musician';
-    var key = "1";
-    var value = {
-        "name": "Alfred Palfred",
-        "bio": "Alfred just does cool stuff."
-    };
 
-    var orchestrate_key = key_holder.access_key;
-    var db = require('orchestrate')(orchestrate_key);
-
-    db.put(collection, key, value)
+    db.put(collection, data_to_write.key, data_to_write.value)
         .then(function (result) {
             res.send(result);
         })
@@ -49,7 +42,7 @@ function write_to_orchestrate(data_to_write) {
 }
 
 function write_to_console(data_to_write) {
-    console.log(data_to_write[i]);
+    console.log("Data " + i + ": " + data_to_write[i]);
 }
 
 Dispenser.prototype.write_it = function (data_to_write) {

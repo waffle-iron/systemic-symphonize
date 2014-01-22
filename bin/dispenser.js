@@ -53,6 +53,7 @@ Dispenser.prototype.write_it = function (data_to_write) {
             write_to_orchestrate(data_to_write[i]);
         }
     }
+    return true;
 }
 
 module.exports = Dispenser;

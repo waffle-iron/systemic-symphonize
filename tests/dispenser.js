@@ -8,6 +8,10 @@ var Chance = require('chance');
 var Dispenser = require('../bin/dispenser');
 var chance = new Chance();
 
+var orchestrate_key_holder = require("../key/orchestrate_key");
+var key_holder = new orchestrate_key_holder();
+var db = require('orchestrate')(key_holder.access_key);
+
 // Sample data for testing.
 var data_result_1 = {
     "key": chance.guid(),
@@ -46,20 +50,9 @@ describe('the dispenser to orchestrate.io', function () {
 
     it('should write passed in data to orchestrate.io.', function (done) {
 
-        var data = data_result_Array;
-
-        dispenser_orchestrate.write_it(data);
+        var result = dispenser_orchestrate.write_it(data_result_Array);
 
         done();
-
-        db.get(collection, key)
-            .then(function (result) {
-
-                var test = result.body;
-            })
-            .fail(function (err) {
-                res.send(err);
-            });
-
+        result.should.eql(true);
     });
 })

@@ -22,11 +22,9 @@ describe('the default key value generation specification defaults', function () 
     it('should be set to "keyvalue" by default for the schema.', function () {
         symphonize_minimal_spec.get_specification().schema.should.eql('keyvalue');
     })
-    it('should be set to "console" by default for the write_source.', function () {
-        symphonize_minimal_spec.get_specification().write_source.should.eql('console');
-    })
+//    it('should be set to "console" by default for the write_source.', function () {
+//        symphonize_minimal_spec.get_specification().write_source.should.eql('console');
+//    })
 
 
 })
-
-

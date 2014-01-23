@@ -35,7 +35,6 @@ describe('the default key value generation', function () {
         var result = symphonize.generate();
         result.length.should.eql(20);
     })
-
 })
 
 var spec_count = 5, spec_fields = 'writing,great,awesome,nifty,things';

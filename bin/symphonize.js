@@ -7,7 +7,6 @@
 var Chance = require('chance');
 var chance = new Chance();
 var Dispensator = require('../bin/dispenser');
-var dispensator = new Dispensator();
 
 // Constructor Invocator
 function Symphonize(generation_spec) {
@@ -32,7 +31,7 @@ Symphonize.prototype.generate = function () {
 
     // **
     build_random_records(recordCount, keyValues, fields);
-    dump_to_write_source(keyValues, collection);
+    dump_to_write_source(keyValues, collection, this._generation_spec.write_source);
 
     return keyValues;
 }
@@ -79,11 +78,9 @@ function generateKeyValue(fields) {
     return generatedResult;
 }
 
-function dump_to_write_source(keyValues, collection) {
-    for (var i = 0; i < keyValues.length; i++) {
-        var data_to_write = keyValues[i];
-        dispensator.write_it(data_to_write, collection);
-    }
+function dump_to_write_source(keyValues, collection, write_source) {
+    dispensator = new Dispensator(write_source);
+    dispensator.write_it(keyValues, collection);
 }
 
 module.exports = Symphonize;

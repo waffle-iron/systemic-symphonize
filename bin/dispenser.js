@@ -28,10 +28,7 @@ function Dispenser(write_to) {
     this._write_to = write_to;
 }
 
-function write_to_orchestrate(data_to_write) {
-
-    var collection = 'musician';
-
+function write_to_orchestrate(data_to_write, collection) {
     db.put(collection, data_to_write.key, data_to_write.value)
         .then(function (result) {
             res.send(result);
@@ -49,7 +46,7 @@ Dispenser.prototype.write_it = function (data_to_write) {
     for (var i = 0; i < data_to_write.length; i++) {
         if (this._write_to === "console") {
             write_to_console(data_to_write[i]);
-        } else if (this._write_to === "orchestrate") {
+        } else if (this._write_to === "orchestrateio") {
             write_to_orchestrate(data_to_write[i]);
         }
     }

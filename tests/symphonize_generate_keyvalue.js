@@ -35,9 +35,10 @@ describe('the default key value generation', function () {
         var result = symphonize.generate();
         result.length.should.eql(20);
     })
+
 })
 
-var spec_count = 5, spec_fields = 'writing,great,awesome,nifty,things';
+var spec_count = 5, spec_fields = 'writing,great,awesome';
 var spec_fields_count = spec_fields.split(',').length;
 var gen_spec_key_value_additional = {"schema": "keyvalue", "count": spec_count, "fields": spec_fields};
 
@@ -49,10 +50,13 @@ describe('the key value generation additional properties', function () {
         result.length.should.eql(spec_count);
     })
 
-    it('should have ' + spec_fields.length + ' in the fields value.', function () {
-        var symphonize = new Symphonize(gen_spec_key_value_additional);
-        var spec = symphonize.get_specification();
-        spec.fields.length.should.eql(spec_fields.length);
+    it('should have ' + spec_fields_count + ' in the fields value.', function () {
+
+        var sepcs = gen_spec_key_value_additional;
+
+        var symphonize = new Symphonize(sepcs);
+        var spec = symphonize.get_specification().fields;
+        spec.split(',').length.should.eql(spec_fields_count);
     })
 
     it('should have ' + spec_fields_count + ' fields.', function () {
@@ -60,11 +64,8 @@ describe('the key value generation additional properties', function () {
         var result = symphonize.generate();
 
         for (var i = 0; i < result.length; i++) {
-
             var generated_data_result = result[i].value[0];
-
             var propNames = Object.getOwnPropertyNames(generated_data_result);
-
             propNames.length.should.eql(spec_fields_count);
         }
 

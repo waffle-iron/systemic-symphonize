@@ -1,3 +1,7 @@
+var should = require('should');
+var Symphonize = require('../bin/symphonize');
+
+// Spool up the database & connection.
 var orchestrate_holder = require("../key/orchestrate_key");
 var key_holder = new orchestrate_holder();
 var orchestrate_key = key_holder.access_key;
@@ -40,5 +44,21 @@ describe('the orchestrate client', function () {
                 done();
             })
     })
+})
 
+describe('verify defaults created in orchestrate', function () {
+    it('should make a collection named sample_data to put generated data in.', function (done) {
+        var symphonize = new Symphonize({"write_source": "orchestrateio"});
+        var result = symphonize.generate();
+
+        db.search('sample_data', '*')
+            .then(function (result) {
+                result.should.exist;
+                done();
+            })
+            .fail(function (err) {
+                err.should.fail;
+                done();
+            })
+    })
 })

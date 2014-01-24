@@ -32,12 +32,10 @@ Symphonize.prototype.generate = function () {
 
     // **
     build_random_records(recordCount, keyValues, fields);
-
     dump_to_write_source(keyValues, collection);
 
     return keyValues;
 }
-
 
 function set_defaults(generation_spec) {
     if (generation_spec.count === undefined || generation_spec.count < 1) {
@@ -83,9 +81,7 @@ function generateKeyValue(fields) {
 
 function dump_to_write_source(keyValues, collection) {
     for (var i = 0; i < keyValues.length; i++) {
-
         var data_to_write = keyValues[i];
-
         dispensator.write_it(data_to_write, collection);
     }
 }

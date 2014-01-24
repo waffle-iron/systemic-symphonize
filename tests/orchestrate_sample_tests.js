@@ -49,16 +49,17 @@ describe('the orchestrate client', function () {
 describe('verify defaults created in orchestrate', function () {
     it('should make a collection named sample_data to put generated data in.', function (done) {
         var symphonize = new Symphonize({"write_source": "orchestrateio"});
-        var result = symphonize.generate();
+        var stuff = symphonize.generate();
 
         db.search('sample_data', '*')
             .then(function (result) {
-                result.should.exist;
+                result.should.not.exist;
                 done();
             })
             .fail(function (err) {
                 err.should.fail;
                 done();
             })
+
     })
 })

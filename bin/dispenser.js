@@ -43,14 +43,21 @@ function write_to_console(data_to_write) {
 }
 
 Dispenser.prototype.write_it = function (data_to_write) {
+
+    var success = true;
+
     for (var i = 0; i < data_to_write.length; i++) {
         if (this._write_to === "console") {
             write_to_console(data_to_write[i]);
         } else if (this._write_to === "orchestrateio") {
             write_to_orchestrate(data_to_write[i]);
         }
+        else {
+            success = false;
+        }
     }
-    return true;
+
+    return success;
 }
 
 module.exports = Dispenser;

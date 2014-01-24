@@ -8,6 +8,7 @@ var Symphonize = require('../bin/symphonize');
 
 // Specs for testing.
 var default_key_value_spec = {"schema": "keyvalue"};
+var minimal_spec = {};
 var gen_spec_key_value_20 = {"schema": "keyvalue", "count": 20};
 
 describe('the default key value generation', function () {
@@ -26,6 +27,24 @@ describe('the default key value generation', function () {
         var symphonize = new Symphonize(default_key_value_spec);
         var keyValue = symphonize.generate();
 
+        keyValue[0].key.should.exist;
+        keyValue[0].value.should.exist;
+    })
+
+    it('should return one even with minimal spec.', function () {
+        var symphonize = new Symphonize(minimal_spec);
+        var keyValue = symphonize.generate();
+
+        keyValue[0].should.exist;
+        keyValue[0].key.should.exist;
+        keyValue[0].value.should.exist;
+    })
+
+    it('should return one with orchestrateio designated.', function () {
+        var symphonize = new Symphonize({"write_source": "orchestrateio"});
+        var keyValue = symphonize.generate();
+
+        keyValue[0].should.exist;
         keyValue[0].key.should.exist;
         keyValue[0].value.should.exist;
     })

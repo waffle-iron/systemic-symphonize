@@ -45,24 +45,33 @@ describe('the orchestrate client', function () {
             })
     })
 
-    it('should work with static data to prove out process.', function(done){
+    it('should work with static data to prove out process of adding records.', function (done) {
         db.put('turkey','9C537CC1-8735-512D-9593-CCB6D71247A2',{"text_value":"Saz noletjit eviobbet esuwidur ojse tocme hitaleh wiud kaci ramvas rogokgo faehcij."})
             .then(function(result){
                 db.get('turkey', '9C537CC1-8735-512D-9593-CCB6D71247A2')
                     .then(function (result) {
                         result.body[text_value].should.exist;
-                        db.deleteCollection('turkey')
-                            .then(function (deleted){
-                                db.get('turkey', '9C537CC1-8735-512D-9593-CCB6D71247A2')
-                                    .then(function (result) {
-                                        result.body[text_value].should.not.exist;
-                                        done();
-                                    })
-                            })
+                        done();
                     })
             })
             .fail(function(err){
                 err.should.not.exist;
+                done();
+            })
+    })
+
+    it('should delete collection turkey that was statically created. #notGoodTestDesign', function (done) {
+        db.deleteCollection('turkey')
+            .then(function (result) {
+                result.body.should.eql("");
+                done();
+            });
+    })
+
+    it('should have no active collection called turkey. #notGoodTestDesign', function (done) {
+        db.get('turkey', '9C537CC1-8735-512D-9593-CCB6D71247A2')
+            .then(function (result) {
+                result.body.should.not.exist;
                 done();
             })
     })

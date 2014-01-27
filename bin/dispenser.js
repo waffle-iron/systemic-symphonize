@@ -46,7 +46,8 @@ function write_to_orchestrate(data_to_write, collection) {
 }
 
 function write_to_console(data_to_write) {
-    console.log("Data: " + data_to_write);
+    console.log("Key: " + data_to_write.key);
+    console.log("Value: " + data_to_write.value);
     return true;
 }
 

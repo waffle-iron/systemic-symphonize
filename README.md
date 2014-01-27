@@ -11,3 +11,5 @@ Join In, Pull Requests and Getting Involved
  * [Issues List](https://github.com/Adron/symphonize/issues?state=open)
  * [Huboard Kanban](https://huboard.com/Adron/symphonize)
  * [Public Gihub Pages Site](http://adron.github.io/symphonize/)
+
+[Adron](https://github.com/Adron) || [@Adron](http://twitter.com/adron) || [![Signature Logo](http://photos.adron.me/Software/Misc-Images/Logo/i-5zk96td/0/O/AH---Logo-32x32.png)](http://adron.me)

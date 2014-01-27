@@ -30,7 +30,11 @@ function Dispenser(write_to) {
 }
 
 function write_to_orchestrate(data_to_write, collection) {
-    db.put(collection, data_to_write.key, data_to_write.value)
+
+    var value = JSON.stringify(data_to_write.value);
+    var key = data_to_write.key;
+
+    db.put(collection, key, value)
         .then(function (result) {
             res.send(result);
             return true;

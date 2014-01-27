@@ -21,7 +21,7 @@ Symphonize.prototype.get_specification = function () {
 Symphonize.prototype.generate = function () {
     var keyValues = new Array();
     var recordCount = 1;
-    var fields = this._generation_spec.fields.split(',');
+    var fields_array = this._generation_spec.fields.split(',');
     var collection = this._generation_spec.collection;
 
     // Generate X amount of records. **
@@ -30,7 +30,7 @@ Symphonize.prototype.generate = function () {
     }
 
     // **
-    build_random_records(recordCount, keyValues, fields);
+    build_random_records(recordCount, keyValues, fields_array);
     dump_to_write_source(keyValues, collection, this._generation_spec.write_source);
 
     return keyValues;
@@ -62,17 +62,16 @@ function build_random_records(recordCount, keyValues, fields) {
     }
 }
 
-function generateKeyValue(fields) {
-
+function generateKeyValue(fields_array) {
     var valueJSON = {};
 
-    for (var i = 0; i < fields.length; i++) {
-        valueJSON[fields[i]] = chance.sentence();
+    for (var i = 0; i < fields_array.length; i++) {
+        valueJSON[fields_array[i]] = chance.sentence();
     }
 
     var generatedResult = {
         "key": chance.guid(),
-        "value": [ valueJSON ]
+        "value": valueJSON
     };
 
     return generatedResult;

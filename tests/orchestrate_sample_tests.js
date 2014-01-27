@@ -44,15 +44,47 @@ describe('the orchestrate client', function () {
                 done();
             })
     })
+
+    it('should work with static data to prove out process.', function(done){
+        db.put('turkey','9C537CC1-8735-512D-9593-CCB6D71247A2',{"text_value":"Saz noletjit eviobbet esuwidur ojse tocme hitaleh wiud kaci ramvas rogokgo faehcij."})
+            .then(function(result){
+                db.get('turkey', '9C537CC1-8735-512D-9593-CCB6D71247A2')
+                    .then(function (result) {
+                        result.body[text_value].should.exist;
+                        db.deleteCollection('turkey')
+                            .then(function (deleted){
+                                db.get('turkey', '9C537CC1-8735-512D-9593-CCB6D71247A2')
+                                    .then(function (result) {
+                                        result.body[text_value].should.not.exist;
+                                        done();
+                                    })
+                            })
+                    })
+            })
+            .fail(function(err){
+                err.should.not.exist;
+                done();
+            })
+    })
 })
 
-describe('verify defaults created in orchestrate', function () {
-    it('should make a collection named sample_data to put generated data in.', function (done) {
-        var symphonize = new Symphonize({"write_source": "orchestrateio"});
+describe('verify spec created data is in orchestrate', function () {
+
+    var write_src = {"write_source":"orchestrateio"};
+    var write_src_fields = {"write_source":"orchestrateio","fields":"field1,field2,field3,field4,field5,end-field,last_field"};
+
+    it('should work with static test data to prove out process.', function (done) {
+
+
+    })
+
+    it('should make a collection named sample_data generate data with multiple fields and put the data in.', function (done) {
+        var symphonize = new Symphonize(write_src_fields);
         symphonize.generate();
+
         var dataReturned = 0;
 
-        db.search('sample_data', '*')
+        db.search('sample_data','*')
             .then(function (result) {
                 dataReturned = result.body.count;
                 done();

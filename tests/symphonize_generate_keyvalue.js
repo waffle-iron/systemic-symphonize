@@ -58,7 +58,13 @@ var spec_write_src_fields = {
     "write_source": "console",
     "fields": "field1,field2,field3,field4,field5,end-field,last_field"};
 var spec_fields = {
-    "fields": "SomeString,MoreString,GotD20,GuidValue"
+    "fields": {
+        "fieldName": "string",
+        "fieldTwo": "d20",
+        "fieldThree": "guid",
+        "fieldFour": "",
+        "fiveField": ""
+    }
 }
 
 describe('given different field and parameters data should generated', function () {

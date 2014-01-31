@@ -4,17 +4,21 @@
  */
 
 {
-    "schema": "keyvalue", /* keyvalue, graph, event */
-    "count": 20, /* X value. */
-    "write_source": "console", /* console, orchestrate */
+    "schema": "keyvalue", /* keyvalue, graph, event, geo */
+    "count": 20, /* X values to generate. */
+    "write_source": "console", /* console, orchestrateio and whatever other data sources that might come up. */
 
     "fields": {
-        "fieldName": "name",
         /* generates a random name. */
+        "fieldName": "name",
+
+        /* generates a random dice roll of a d20. */
         "fieldTwo": "d20",
-        /**/
-        "fieldSentence": "sentence",
+
         /* A single lorum ipsum random statement is genereated. */
-        "fieldGuid": "guid" /* A random guid is generated. */
+        "fieldSentence": "sentence",
+
+        /* A random guid is generated. */
+        "fieldGuid": "guid"
     }
 }

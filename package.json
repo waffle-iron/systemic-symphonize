@@ -19,14 +19,16 @@
         "data",
         "generation",
         "random",
-        "dataset"
+        "dataset",
+        "orchestrate.io",
+        "generator"
     ],
     "author": "Adron Hall",
     "license": "Apache 2.0",
     "bugs": {
         "url": "https://github.com/Adron/symphonize/issues"
     },
-    "homepage": "https://github.com/Adron/symphonize",
+    "homepage": "http://adron.github.io/symphonize/",
     "dependencies": {
         "chance": "~0.5.4",
         "orchestrate": "0.0.3"

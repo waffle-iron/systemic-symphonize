@@ -19,6 +19,7 @@ First fork the repository located at [https://github.com/Adron/symphonize](https
 	npm install
 
 Using The Library
+---
 
 The intended usage is to invocate the JavaScript object and then call generate. That's it, a super simple process. The code would look like this:
 

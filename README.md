@@ -83,9 +83,16 @@ Each of the configuration options that are available have a default in the confi
 	        	"length": 5,
 	        	"pool": "abcdefgh"
 	        },
-	        "_sentence": {
-	        	"fieldName": "NameOfFiledOfSentences",
-	        	"sentence": "5"
+ 		    "_name": {
+	        	"fieldName": "nameFieldName",
+	        	"middle": true,
+	        	"middle_initial": true,
+	        	"prefix": true
+	        },
+	        "_hash": {
+	        	"fieldName": "HashFieldName",
+	        	"length": 25,
+	        	"casing": 'upper'
 	        },
 	        "fieldGuid": "guid"
 	    }
@@ -134,7 +141,7 @@ Each of the configuration options that are available have a default in the confi
 	        }
 	        
 	    Samples of the result would look like this for the field: 'Dafi Vatemi', 'Nelgatwu Powuku Heup', 'Ezme I Iza', 'Doctor Suosat Am', 'Mrs. Suosat Am' or 'Mr. Suosat Am'.
-
+	
 **Dependencies**
 
 In this project we've used several other libraries, all available via NPM. These projects include: [orchestrate.js](https://npmjs.org/package/orchestrate) and [chance.js](https://npmjs.org/package/chance). They'll be pulled in automatically when running npm install or when the symphonize library is included in your project. In other words this dependency list is just an FYI.

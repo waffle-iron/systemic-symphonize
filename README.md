@@ -36,11 +36,11 @@ Once the Symphonize data generator has been created call the generate() method a
 
 	symphonize.generate();
 
-That's basically it. But you say, it's supposed to do X, Y or Z. Well that's where the json configuration data comes into play. In the configuration data you can set the data fields and what they'll generate, what type of data will be generated, the specific schema, how many records to create and more. The library comes with the generate.json file already setup with a working example. Currently the file looks like this:
+That's basically it. But you say, it's supposed to do X, Y or Z. Well that's where the json configuration data comes into play. In the configuration data you can set the data fields and what they'll generate, what type of data will be generated, the specific schema, how many records to create and more.
 
-	/**
-	 * This is a sample file for configuration.
-	 */
+generate.json
+---
+The library comes with the generate.json file already setup with a working example. Currently the generation file looks like this:
 
 	{
 	    "schema": "keyvalue", /* keyvalue, graph, event, geo */
@@ -61,6 +61,7 @@ That's basically it. But you say, it's supposed to do X, Y or Z. Well that's whe
 	        "fieldGuid": "guid"
 	    }
 	}
+
 
 
 **Dependencies**

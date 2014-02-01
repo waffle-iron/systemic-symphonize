@@ -106,9 +106,34 @@ Each of the configuration options that are available have a default in the confi
 
  * **Complex Field Configuration**: Some fields require more complex configuration for data generation, simply because the data needs some baseline of what the range or length of the values need to be. The following list details each of these. It is also important to note that these complex field configurations do not have defaults, each value must be set in the JSON configuration or an error will be thrown detailing that a complex field type wasn't designated. Each of these complex field types is a JSON name and value parameter. The name is the passed in data type with a preceding underscore '_' to generate with the value having the configuration parameters for that particular data type.
  	
- 	* "_"
-
-
+ 	* "_string": This generates string data based on a *length* and *pool* parameters. Required fields for this include *fieldName*, *length* and *pool*. The JSON would look like this:
+ 	
+ 		     "_string": {
+	        	"fieldName": "NameOfFieldForString",
+	        	"length": 5,
+	        	"pool": "abcdefgh"
+	        }
+	        
+	    Samples of the result would look like this for the field; 'abdef', 'hgcde' or 'ahdfg'.
+	* "_hash": This generates a hash based on the *length* and *upper* parameters. Required fields for this included *fieldName*, *length* and *upper*. The JSON would look like this:
+	
+ 		     "_hash": {
+	        	"fieldName": "HashFieldName",
+	        	"length": 25,
+	        	"casing": 'upper'
+	        }
+	        
+	    Samples of the result would look like this for the field: 'e5162f27da96ed8e1ae51def1ba643b91d2581d8' or '3F2EB3FB85D88984C1EC4F46A3DBE740B5E0E56E'.
+	* "_name": This generates a name based on the *middle*, *middle_initial* and *prefix* parameters. Required fields for this included *fieldName*, *middle*, *middle_initial* and *prefix*. The JSON would look like this:
+	
+ 		     "_name": {
+	        	"fieldName": "nameFieldName",
+	        	"middle": true,
+	        	"middle_initial": true,
+	        	"prefix": true
+	        }
+	        
+	    Samples of the result would look like this for the field: 'Dafi Vatemi', 'Nelgatwu Powuku Heup', 'Ezme I Iza', 'Doctor Suosat Am', 'Mrs. Suosat Am' or 'Mr. Suosat Am'.
 
 **Dependencies**
 

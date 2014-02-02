@@ -4,6 +4,7 @@ Description: This is a simple markdown file for describing what tests are in whi
 
 **Test Files:**
 
+ * *_testing.js* - Simple library to ensure that *mocha* and *should* are included. If these fail then likely an **npm install** needs run to pull in the libraries.
  * *_orchestrate_key.js* - Simple object constructor test and verification of object constructors.
  * *_dispenser.js* - Simple object constructor test and verification of object constructors.
  	 * *_dispenser_integration.js* - Functional integration tests for reading and writing verification to Orchestrate.io, console and other mediums as they're made available.

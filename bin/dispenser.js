@@ -25,15 +25,12 @@ var orchestrate_key_holder = require("../key/orchestrate_key");
 var key_holder = new orchestrate_key_holder();
 var db = require('orchestrate')(key_holder.access_key);
 
-function Dispenser(write_to) {
+function Dispenser(write_to, collection) {
     this._write_to = write_to;
+    this._collection = collection;
 }
 
-function write_to_orchestrate(data_to_write, collection) {
-
-    var value = JSON.stringify(data_to_write.value);
-    var key = data_to_write.key;
-
+function write_to_orchestrate(collection, key, value) {
     db.put(collection, key, value)
         .then(function (result) {
             res.send(result);
@@ -47,7 +44,7 @@ function write_to_orchestrate(data_to_write, collection) {
 
 function write_to_console(data_to_write) {
     console.log("Key: " + data_to_write.key);
-    console.log("Value: " + data_to_write.value);
+    console.log("Value: " + JSON.stringify(data_to_write.value));
     return true;
 }
 
@@ -55,15 +52,12 @@ Dispenser.prototype.write_it = function (data_to_write) {
 
     var success = false;
 
-    for (var i = 0; i < data_to_write.length; i++) {
-        if (this._write_to === "console") {
-            success = write_to_console(data_to_write[i]);
-        } else if (this._write_to === "orchestrateio") {
-            success = write_to_orchestrate(data_to_write[i]);
-        }
-        else {
-            success = false;
-        }
+    if (this._write_to === "console") {
+        success = write_to_console(data_to_write);
+    } else if (this._write_to === "orchestrateio") {
+        success = write_to_orchestrate(this._collection, data_to_write.key, data_to_write.value);
+    } else {
+        success = false;
     }
 
     return success;

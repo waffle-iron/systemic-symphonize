@@ -57,7 +57,7 @@
 //    it('should work with static data to prove out process of adding records.', function (done) {
 //        db.put('turkey', '9C537CC1-8735-512D-9593-CCB6D71247A2', {"text_value": "Saz noletjit eviobbet esuwidur ojse tocme hitaleh wiud kaci ramvas rogokgo faehcij."})
 //            .then(function (result) {
-//                db.get('turkey', '9C537CC1-8735-512D-9593-CCB6D71247A2')
+//                db.get('turkey', '9C537CC1-8735-asdf-9593-CCB6D71247A2')
 //                    .then(function (result) {
 //                        result.body[text_value].should.exist;
 //                        done();

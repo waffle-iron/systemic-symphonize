@@ -7,7 +7,8 @@ Description: This is a simple markdown file for describing what tests are in whi
  * *_testing.js* - Simple library to ensure that *mocha* and *should* are included. If these fail then likely an **npm install** needs run to pull in the libraries.
  * *_orchestrate_key.js* - Simple object constructor test and verification of object constructors.
  * *_dispenser.js* - Simple object constructor test and verification of object constructors.
- 	 * *_dispenser_integration.js* - Functional integration tests for reading and writing verification to Orchestrate.io, console and other mediums as they're made available.
+ 	 * *_dispenser_orchestrate.js* - Functional integration tests for reading and writing verification to Orchestrate.io.
+ 	 * *_dispenser_console.js* - Functional integration tests for writing verification to the console.
  * *_symphonize.js* - Simple object constructor test and verification of object constructors.
   	 * *_symphonize_configuration.js* - Tests to verify configuration read from constructor or from file.
   	 * *_symphonize_configuration_parameters.js* - Tests to verify if the configuration passed in has defaults set and is read correctly.

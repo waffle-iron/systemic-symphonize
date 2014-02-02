@@ -34,11 +34,9 @@ function write_to_orchestrate(collection, key, value) {
     db.put(collection, key, value)
         .then(function (result) {
             res.send(result);
-            return true;
         })
         .fail(function (err) {
             res.send(err);
-            return false;
         });
 }
 

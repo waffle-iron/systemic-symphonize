@@ -30,7 +30,7 @@ function Dispenser(write_to, collection) {
     this._collection = collection;
 }
 
-function write_to_orchestrate(collection, key, value) {
+Dispenser.prototype.write_to_orchestrate = function (collection, key, value) {
     db.put(collection, key, value)
         .then(function (result) {
             res.send(result);
@@ -40,25 +40,10 @@ function write_to_orchestrate(collection, key, value) {
         });
 }
 
-function write_to_console(data_to_write) {
-    console.log("Key: " + data_to_write.key);
-    console.log("Value: " + JSON.stringify(data_to_write.value));
+Dispenser.prototype.write_to_console = function (key, value) {
+    console.log("Key: " + key);
+    console.log("Value: " + JSON.stringify(value));
     return true;
-}
-
-Dispenser.prototype.write_it = function (data_to_write) {
-
-    var success = false;
-
-    if (this._write_to === "console") {
-        success = write_to_console(data_to_write);
-    } else if (this._write_to === "orchestrateio") {
-        success = write_to_orchestrate(this._collection, data_to_write.key, data_to_write.value);
-    } else {
-        success = false;
-    }
-
-    return success;
 }
 
 module.exports = Dispenser;

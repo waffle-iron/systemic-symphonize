@@ -1,5 +1,4 @@
 [![Build](https://travis-ci.org/Adron/symphonize.png)](http://travis-ci.org/jaredhanson/passport-http-bearer)
-[![Coverage](https://coveralls.io/repos/Adron/symphonize/badge.png)](https://coveralls.io/r/Adron/symphonize)
 [![Dependencies](https://david-dm.org/Adron/symphonize.png)](http://david-dm.org/Adron/symphonize)
 
 ![Symphonize.js](http://photos.adron.me/Software/Software-Development/Symphonize/i-kzTdM4Q/0/S/Symphonize-S.png "Symphonize.js")

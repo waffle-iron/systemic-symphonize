@@ -21,6 +21,7 @@
         "random",
         "dataset",
         "orchestrate.io",
+        "orchestrate",
         "generator"
     ],
     "author": "Adron Hall",
@@ -31,7 +32,7 @@
     "homepage": "http://adron.github.io/symphonize/",
     "dependencies": {
         "chance": "~0.5.4",
-        "orchestrate": "0.0.3"
+        "orchestrate": "0.0.9"
     },
     "devDependencies": {
         "should": "~2.1.1",

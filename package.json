@@ -32,7 +32,8 @@
     "homepage": "http://adron.github.io/symphonize/",
     "dependencies": {
         "chance": "~0.5.4",
-        "orchestrate": "0.0.9"
+        "orchestrate": "0.0.9",
+        "convict": "~0.4.2"
     },
     "devDependencies": {
         "should": "~2.1.1",

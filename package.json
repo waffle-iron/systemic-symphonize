@@ -31,12 +31,12 @@
     },
     "homepage": "http://adron.github.io/symphonize/",
     "dependencies": {
-        "chance": "~0.5.4",
-        "orchestrate": "0.0.9",
-        "convict": "~0.4.2"
+        "chance": "~0.7.1",
+        "orchestrate": "0.3.16",
+        "convict": "~0.6.0"
     },
     "devDependencies": {
-        "should": "~2.1.1",
-        "mocha": "~1.17.0"
+        "should": "~4.4.4",
+        "mocha": "~2.1.0"
     }
 }

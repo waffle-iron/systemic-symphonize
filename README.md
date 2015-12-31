@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/adron/symphonize.png?label=ready&title=Ready)](https://waffle.io/adron/symphonize)
+
 [![Dependencies](https://david-dm.org/Adron/symphonize.png)](http://david-dm.org/Adron/symphonize)
 
 ![Symphonize.js](http://photos.adron.me/Software/Software-Development/Symphonize/i-kzTdM4Q/0/S/Symphonize-S.png "Symphonize.js")

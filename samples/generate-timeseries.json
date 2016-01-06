@@ -1,0 +1,12 @@
+{
+    "schema": "timeseries",
+    "count": 20,
+    "write_source": "console",
+
+    "fields": {
+        "fieldName": "name",
+        "fieldTwo": "d20",
+        "fieldSentence": "sentence",
+        "fieldGuid": "guid"
+    }
+}

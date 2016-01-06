@@ -12,7 +12,7 @@
  */
 
 // Setup the database connection to orchestrate.io.
-var orchestrate_key_holder = require ("../key/orchestrate_key");
+// var orchestrate_key_holder = require ("../key/orchestrate_key");
 var key_holder = new orchestrate_key_holder ();
 var db = require ('orchestrate') (key_holder.access_key);
 

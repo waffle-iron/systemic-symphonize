@@ -1,7 +1,7 @@
 {
     "name": "symphonize",
     "version": "0.0.5",
-    "description": "A data generator specifically built for Orchestrate.io",
+    "description": "A data generator specifically built for...",
     "main": "index.js",
     "directories": {
         "test": "tests"

@@ -12,29 +12,3 @@
  */
 
 // Setup the database connection to orchestrate.io.
-// var orchestrate_key_holder = require ("../key/orchestrate_key");
-var key_holder = new orchestrate_key_holder ();
-var db = require ('orchestrate') (key_holder.access_key);
-
-function Dispenser (write_to, collection) {
-    this._write_to = write_to;
-    this._collection = collection;
-}
-
-Dispenser.prototype.write_to_orchestrate = function (collection, key, value) {
-    db.put (collection, key, value)
-        .then (function (result) {
-        res.send (result);
-    })
-        .fail (function (err) {
-        res.send (err);
-    });
-}
-
-Dispenser.prototype.write_to_console = function (key, value) {
-    console.log ("Key: " + key);
-    console.log ("Value: " + JSON.stringify (value));
-    return true;
-}
-
-module.exports = Dispenser;

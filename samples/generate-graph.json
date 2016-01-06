@@ -3,19 +3,5 @@
     "count": 20,
     "write_source": "console",
 
-    "graphBase": {
-      "depth": "10",
-      "elements": [{
-
-        },{
-
-          }]
-    }
-
-    "fields": {
-        "fieldName": "name",
-        "fieldTwo": "d20",
-        "fieldSentence": "sentence",
-        "fieldGuid": "guid"
-    }
+    "graphBase": ""
 }

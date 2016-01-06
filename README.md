@@ -1,7 +1,8 @@
-symphonize.js
+# symphonize.js
 [![Build Status](https://travis-ci.org/Adron/systemic-symphonize.svg)](https://travis-ci.org/Adron/systemic-symphonize)
 ![Symphonize.js](http://photos.adron.me/Software/Software-Development/Symphonize/i-kzTdM4Q/0/S/Symphonize-S.png "Symphonize.js")
 ===
+
 NOTE: This project is still a few steps away from being deployed for use via npm. However all of these instructions are written as if it is complete. Please verify that we're in a released v0.1.0 state before using the project via npm. Currently the project on npm is on v0.0.4
 
 **Description:** This project is a data generation library that makes the data available as generated for display via the console or for external services or formats like JSON. It can be used locally or as a tool to create random data based on configuration for testing, experimentation or however or whatever you may need data for.

@@ -27,5 +27,11 @@
   "bugs": {
     "url": "https://github.com/Adron/systemic-symphonize/issues"
   },
-  "homepage": "https://github.com/Adron/systemic-symphonize#readme"
+  "homepage": "https://github.com/Adron/systemic-symphonize#readme",
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  },
+  "dependencies": {
+    "chance": "^0.8.0"
+  }
 }

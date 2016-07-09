@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Adron/systemic-symphonize.png?label=ready&title=Ready)](https://waffle.io/Adron/systemic-symphonize)
 [![Systemic Symphonize](./logo/Systemic-DNA-Code-symphonize-256x256.png)](./logo/Systemic-DNA-Code-symphonize-256x256.png)
 
 # Symphonize
